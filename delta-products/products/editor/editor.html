@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Editor</title>
+	<link rel="icon" type="image/jpeg" href="favicon_ico.jpg">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+<a href="index.html">    ┌────────╮
+    │ RELOAD │
+    ╰────────┘</a>
+<p>─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</p>
+<a onclick="coding = true;">    ┌──────╮
+    │ CODE │
+    ╰──────┘</a>
+<a onclick="coding = false;">    ┌──────╮
+    │ STOP │
+    ╰──────┘</a>
+<a onclick="runCode();">    ┌─────╮
+    │ RUN │
+    ╰─────┘</a>
+<p>    ┌─────────────╮
+    │ TYPE CURSOR │
+    ╰─────────────┘</p><br>
+<a onclick="typeCursor = '█';">    > █</a><br>
+<a onclick="typeCursor = '│';">    > │</a><br>
+<a onclick="typeCursor = '_';">    > _</a><br>
+<p>─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</p>
+<p id="code">
+Press CODE to start coding.
+</p>
+<p id="output">
+                           ╮
+  Press RUN to see output.
+╰
+</p>
+<p>─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</p>
+</body>
+</html>

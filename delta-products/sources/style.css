@@ -1,0 +1,32 @@
+body {
+	background: #020;
+	color: #0f0;
+	font-family: monospace;
+	padding: 16px;
+}
+button, a {
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	corner-shape: squircle;
+	border: none;
+	background: #080;
+	color: #0f0;
+	margin: 4px;
+	padding: 4px;
+	font-family: monospace;
+	cursor: pointer;
+	text-decoration: none;
+}
+pre, code, div, details {
+	padding: 8px;
+	margin: 4px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	corner-shape: squircle;
+	border: 1px solid #0f0;
+	color: #0f0;
+	text-decoration: none;
+}
+b {
+	font-size: 15px;
+}
