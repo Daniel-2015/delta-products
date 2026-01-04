@@ -40,7 +40,8 @@ div, code, pre, details, fieldset {
     padding: 20px;
     margin-bottom: 15px;
     corner-shape: var(--type);
-    box-shadow: 0 0px 10px #0008;
+    box-shadow: 0 0 10px #0008;
+    backdrop-filter: blur(10px);
 }
 
 /* Botones profesionales */
@@ -97,4 +98,5 @@ a:hover {
 }
 `;
 document.head.append(style);
+
 
