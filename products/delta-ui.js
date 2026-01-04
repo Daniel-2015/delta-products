@@ -41,7 +41,7 @@ div, code, pre, details, fieldset {
     margin-bottom: 15px;
     corner-shape: var(--type);
     box-shadow: 0 0 10px #0008;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
 }
 
 /* Botones profesionales */
@@ -98,5 +98,6 @@ a:hover {
 }
 `;
 document.head.append(style);
+
 
 
