@@ -17,7 +17,7 @@ button, a {
 	cursor: pointer;
 	text-decoration: none;
 }
-pre, code, div, details {
+pre, code, div, details, input, textarea {
 	padding: 8px;
 	margin: 4px;
 	border-top-right-radius: 10px;
@@ -29,4 +29,5 @@ pre, code, div, details {
 }
 b {
 	font-size: 15px;
+
 }
