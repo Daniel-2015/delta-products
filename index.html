@@ -40,17 +40,17 @@
 		</div>
 	</details>
 	Need <b>debugging</b>?
-	<br>
-	<label for="asunto">Matter:</label><br>
-	<input type="text" id="asunto" placeholder="MATTER">
-	<br>
-	<label for="mensaje">Message:</label><br>
-	<textarea id="mensaje" placeholder="MESSAGE"></textarea>
-	<br>
-	<button type="button" onclick="enviarCorreo()">
-		Send
-	</button>
-
+	</p>
+	<details>
+		<summary>Files</summary>
+		<div>
+			<label for="asunto">Matter:</label><br>
+			<input type="text" id="asunto" placeholder="MATTER"><br>
+			<label for="mensaje">Message:</label><br>
+			<textarea id="mensaje" placeholder="MESSAGE"></textarea><br>
+			<button type="button" onclick="enviarCorreo()">Send</button>
+		</div>
+	</details>
 <script>
     function enviarCorreo() {
         // 1. Obtener la dirección de correo (cambia esto por la tuya)
@@ -75,6 +75,7 @@
 </script>
 </body>
 </html>
+
 
 
 
