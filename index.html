@@ -40,11 +40,46 @@
 		</div>
 	</details>
 	Need <b>debugging</b>?
-	<a href="mailto:josuedanielposadas@gmail.com">
-		Send mail
-	</a>
+<div class="contenedor-formulario">
+	<h2>Escríbenos</h2>
+
+	<label for="asunto">Matter:</label>
+	<input type="text" id="asunto" placeholder="MATTER">
+
+	<label for="mensaje">Message:</label>
+	<textarea id="mensaje" placeholder="MESSAGE"></textarea>
+
+	<button type="button" onclick="enviarCorreo()">
+		Send
+	</button>
+</div>
+
+<script>
+    function enviarCorreo() {
+        // 1. Obtener la dirección de correo (cambia esto por la tuya)
+        const emailDestino = "josuedanielposadas@gmail.com";
+
+        // 2. Obtener los valores de los inputs
+        const asunto = document.getElementById('asunto').value;
+        const cuerpo = document.getElementById('mensaje').value;
+
+        /* 3. Codificar los textos.
+           encodeURIComponent convierte espacios y signos en códigos que 
+           el navegador entiende (ej: un espacio se vuelve %20).
+        */
+        const asuntoCodificado = encodeURIComponent(asunto);
+        const cuerpoCodificado = encodeURIComponent(cuerpo);
+
+        // 4. Construir la URL final
+        const urlMailto = `mailto:${emailDestino}?subject=${asuntoCodificado}&body=${cuerpoCodificado}`;
+
+        // 5. Ejecutar la acción
+        window.location.href = urlMailto;
+    }
+</script>
 </body>
 </html>
+
 
 
 
