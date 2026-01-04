@@ -68,14 +68,14 @@
         const cuerpoCodificado = encodeURIComponent(cuerpo);
 
         // 4. Construir la URL final
-        const urlMailto = `mailto:${emailDestino}?subject=${asuntoCodificado}&body=${cuerpoCodificado}`;
-
-        // 5. Ejecutar la acción
-        window.location.href = urlMailto;
+        const a = document.createElement("a");
+		a.href = `https://mail.google.com/mail/?view=cm&fs=1&to=tucorreo@ejemplo.com&su=Consulta&body=Hola, escribo desde la web...`;
+		a.click();
     }
 </script>
 </body>
 </html>
+
 
 
 
