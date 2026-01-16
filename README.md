@@ -1,7 +1,7 @@
 # Delta Products
 
 **Delta Products** is a static website published on GitHub Pages that contains HTML projects developed by **Josué Daniel Posadas**.  
-The repository is available at: [Daniel-2015/delta-products](https://github.com/Daniel-2015/delta-products)
+The repository is available at: [`Daniel-2015/delta-products`](https://github.com/Daniel-2015/delta-products)
 
 ---
 
@@ -37,16 +37,16 @@ The goal of **Delta Products** is:
 - **JavaScript** (interactivity in some projects)
 
 Approximate language distribution according to GitHub:  
-- JavaScript: 65.3%  
-- HTML: 31.3%  
-- CSS: 3.4%
+- JavaScript: 55.8%  
+- HTML: 38.4%  
+- CSS: 5.8%
 
 ---
 
 ## 🌐 Access
 
 The site is published on GitHub Pages:  
-👉 [https://daniel-2015.github.io/delta-products](https://daniel-2015.github.io/delta-products)
+[`👉 Click here`](https://daniel-2015.github.io/delta-products)
 
 ---
 
