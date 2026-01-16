@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de QR Simple</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .contenedor {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #codigo-qr {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>QR code generator</h1>
+        <p>Link, please:</p>
+        
+        <input type="text" id="texto-usuario" placeholder="Ex: www.google.com">
+        <button onclick="generarQR()">Generate</button>
+        
+        <div id="codigo-qr"></div>
+    </div>
+
+    <script>
+        function generarQR() {
+            // 1. Obtenemos el valor que escribió el usuario
+            var texto = document.getElementById("texto-usuario").value;
+            
+            // 2. Obtenemos el contenedor donde irá el QR
+            var contenedorQR = document.getElementById("codigo-qr");
+
+            // 3. Limpiamos el contenedor por si ya había un QR antes
+            contenedorQR.innerHTML = "";
+
+            // 4. Validamos que no esté vacío
+            if (texto === "" || !texto) {
+                alert("No link.");
+                return;
+            }
+
+            // 5. Usamos la librería para generar el QR
+            // new QRCode(Ubicación, Texto)
+            new QRCode(contenedorQR, {
+                text: texto,
+                width: 128,  // Ancho del QR
+                height: 128, // Alto del QR
+                colorDark : "#000000", // Color de los puntos
+                colorLight : "#ffffff", // Color del fondo
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+
+</body>
+</html>

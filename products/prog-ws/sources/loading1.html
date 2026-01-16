@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <style>
+        img {
+            transform: scale(0.1) rotate(15deg);
+            position: fixed;
+            top: calc(50% - 400px);
+            left: calc(50% - 400px);
+        }
+    </style>
+</head>
+<body>
+    <img id="circle" src="load-circle.png">
+    <script>
+        let rot = 0;
+        function run() {
+            const f = x => 225 + 180 * Math.sin(Math.PI / 360 * (x % 360 - 180));
+            document.getElementById("circle").style.transform = `rotate(${f(rot)}deg) scale(0.1)`;
+            rot += 4;
+            setTimeout(run, 0);
+        }
+        run();
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <style>
+        textarea {
+            padding: 8px;
+            color: white;
+            background: black;
+            border: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        
+        button {
+            border: none;
+            color: lime;
+            background: black;
+            padding: 8px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            font-family: monospace
+        }
+    </style>
+</head>
+<body>
+    <textarea id="code">~ $ > </textarea>
+    <button onclick="run();">Run</button>
+    <script>
+/**
+ * Objeto que contiene las funciones del sistema.
+ * Cada propiedad es un comando ejecutable.
+ */
+const output = document.getElementById('code');
+const commands = {
+    // 1. Comando de ayuda
+    help: () => {
+        return "\n~ $ > help\n~ $ > clear\n~ $ > save <name>\n~ $ > ls\n~ $ > download <type> <filename>";
+    },
+
+    // 2. Limpiar la consola (emulando CLS)
+    cl: () => {
+        if (output) output.value = "";
+        return "";
+    },
+
+    // 3. Ver qué hay en el localStorage (emulando LS o DIR)
+    dr: () => {
+        return Object.keys(localStorage).join("  ") || "No files";
+    },
+
+    // 4. Guardar el código actual en un slot
+    wr: (args) => {
+        const name = args[0] || "untitled";
+        const content = args[1];
+        localStorage.setItem(name, content);
+        return `Contenido guardado en slot: ${name}`;
+    },
+
+    // 5. Tu función de descarga integrada y corregida
+    dw: (args) => {
+        const type = args[0] || "txt"; // html, txt, js
+        const fileName = args[1] || `archivo.${type}`;
+        const content = localStorage.getItem("slot") || "";
+
+        const blob = new Blob([content], { type: `text/${type}` });
+        const url = window.URL.createObjectURL(blob);
+        const enlace = document.createElement('a');
+        
+        enlace.href = url;
+        enlace.download = fileName;
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+        window.URL.revokeObjectURL(url);
+
+        return `Downloading ${fileName}...`;
+    },
+    
+    rd: (args) => localStorage.getItem(args[0]) || "No file",
+    
+    dt: () => new Date().toLocaleString(),
+};
+
+/**
+ * Función principal que procesa la entrada del usuario
+ */
+function run() {
+    // Buscamos el símbolo ~ $ > para separar el comando del resto del texto
+    if (!output.value.includes("~ $ >")) return;
+
+    const parts = output.value.split("~ $ >");
+    const commandLine = parts.at(-1).trim(); // Tomamos lo último después del ~ $ >
+    const [cmdName, ...args] = commandLine.split(" ");
+
+    // Ejecución del comando
+    if (commands[cmdName]) {
+        const result = commands[cmdName](args);
+        output.value += "\n" + (result) + "\n\n~ $ > "; // O mostrarlo en un div de resultados
+    } else {
+        output.value += "\n" + (`Error: Unknown "${cmdName}"`) + "\n\n~ $ > ";
+    }
+}
+    </script>
+</body>
+</html>

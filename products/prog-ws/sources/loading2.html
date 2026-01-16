@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <script>
+// 1. Configuración del entorno (Fondo negro y centrado)
+document.body.style.backgroundColor = "#000";
+document.body.style.margin = "0";
+document.body.style.height = "100vh"; // Altura completa de la ventana
+document.body.style.display = "flex";
+document.body.style.justifyContent = "center";
+document.body.style.alignItems = "center";
+
+// Contenedor para mantener la estructura de las barras alineada
+const container = document.createElement("div");
+container.style.display = "flex";
+container.style.flexDirection = "column"; // Apilar verticalmente
+document.body.append(container);
+
+// 2. Datos y función helper
+const range = (a, b = 0) => {
+    return a <= b 
+        ? Array.from({length: b - a}, (_, idx) => idx + a) 
+        : Array.from({length: a}, (_, idx) => idx);
+};
+
+const tabs = [0, 0, 0, 1, 2, 2, 1, 1, 0, 0, 0];
+const length = [10, 12, 7, 7, 9, 7, 1, 8, 1, 8, 7];
+const barrasDOM = []; // Aquí guardaremos las referencias a los divs creados
+
+// 3. Creación de las barras (Renderizado estático)
+for (const index of range(11)) {
+    const item = document.createElement("div");
+    
+    // Estilos base
+    item.style.height = "12px";
+    item.style.marginBottom = "4px"; 
+    item.style.backgroundColor = "gray"; // Color base gris
+    item.style.borderRadius = "3px";     // Redondeo de 3px
+    item.style.transition = "background-color 0.1s"; // Suavizado opcional
+
+    // Dimensiones y posición según tus arrays
+    // Nota: Multipliqué x30 y x24 para que se vean bien en pantalla completa
+    if (length[index] !== undefined) item.style.width = `${length[index] * 9}px`;
+    if (tabs[index] !== undefined) item.style.marginLeft = `${tabs[index] * 27}px`;
+
+    container.append(item);
+    barrasDOM.push(item); // Guardamos el div en nuestro array
+}
+
+// 4. Lógica de Animación
+// Tu secuencia exacta (nota: restamos 1 porque los arrays empiezan en 0, no en 1)
+const sequenceRaw = [1,2,3,4,5,6,7,4,5,6,7,4,5,6,7,8, 9,3,4,5,6,7,4,5,6,7,4,5,6,7,8,9,3,4,5,6,7,4,5,6,7,4,5,6,7,8,9,10,11];
+const sequence = sequenceRaw.map(n => n - 1); // Convertir a índice base-0
+
+let step = 0; // Contador de pasos
+
+setInterval(() => {
+    // 1. Apagar todas las barras (volver a gris)
+    barrasDOM.forEach(bar => bar.style.backgroundColor = "gray");
+
+    // 2. Obtener el índice de la barra que toca iluminar ahora
+    // Usamos el operador % para que la animación se repita en bucle infinito
+    const currentBarIndex = sequence[step % sequence.length];
+
+    // 3. Iluminar la barra actual
+    if (barrasDOM[currentBarIndex]) {
+        barrasDOM[currentBarIndex].style.backgroundColor = "#0f0"; // Verde brillante
+        
+        // Efecto opcional: Sombra resplandeciente (glow)
+        barrasDOM[currentBarIndex].style.boxShadow = "0 0 10px #0f0"; 
+        
+        // Quitamos la sombra a las demás para limpiar
+        barrasDOM.forEach((bar, idx) => {
+            if(idx !== currentBarIndex) bar.style.boxShadow = "none";
+        });
+    }
+
+    step++; // Avanzar al siguiente paso
+}, 90);
+
+    </script>
+</body>
+</html>

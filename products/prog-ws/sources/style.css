@@ -1,0 +1,86 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden; /* Evita barras de desplazamiento dobles */
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.taskbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box; /* Evita que el padding rompa el ancho del 100% */
+    border: none;
+    backdrop-filter: blur(8px);
+    background: rgba(34, 34, 34, 0.13); /* Equivalente a #2222 */
+    z-index: 999;
+}
+
+.taskbar button {
+    height: 24px;
+    padding: 6px;
+    border: none;
+    corner-shape: squircle;
+    border-radius: 12px;
+    font-family: monospace;
+}
+
+.window {
+    display: none;
+    corner-shape: squircle;
+    position: absolute; /* Cambiado de static/block para poder moverla */
+    width: calc(100% - 16px); /* Necesitas un ancho base */
+    height: calc(100% - 76px); /* Necesitas un alto base */
+    bottom: 8px;
+    left: 8px;
+    
+    backdrop-filter: blur(8px);
+    background: rgba(34, 34, 34, 0.13);
+    border-radius: 16px; /* Reemplazo estándar para squircle */
+    
+    /* Padding eliminado para que el iframe llene la ventana. 
+       Si quieres padding, usa box-sizing: border-box */
+    padding: 0; 
+    overflow: hidden; /* Recorta el contenido a los bordes redondeados */
+}
+
+.window iframe {
+    width: 100%;
+    height: calc(100% - 24px);
+    border: none;
+    background: #fff; /* Fondo blanco para que el contenido sea legible */
+    display: block;
+    position: absolute; 
+    bottom: 0;
+}
+
+.window .x-b {
+    background: #ff0000;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: none;
+    
+    /* Centrar contenido del botón */
+    corner-shape: squircle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute; /* Absolute relativo a .window, no a la pantalla */
+    top: 3px;
+    right: 3px;
+    z-index: 10; /* Asegura que esté por encima del iframe */
+    cursor: pointer;
+}
+
+.window p {    margin: 6px;}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Título de la página</title>
+    <link rel="stylesheet" href="sources/style.css">
+    <script src="sources/script.js"></script>
+</head>
+<body>
+    <div class="taskbar">
+        <a href="https://daniel-2015.github.io/delta-products/" style="font-size: 24px;">🌐</a>
+        <button onclick="tab('Command prompt')">Command prompt</button>
+        <button onclick="web('https://daniel-2015.github.io/delta-products/')">Delta products</button>
+        <button onclick="tab('QR Gen')">QR code generator</button>
+        <button onclick="web('https://www.desmos.com/')">Desmos</button>
+    </div>
+    <div class="window">
+        <p id="ttl">Delta products</p>
+        <button class="x-b" onclick="document.getElementsByClassName('window')[0].style.display = 'none';">x</button>
+        <iframe src="" id="on"></iframe>
+    </div>
+</body>
+</html>
