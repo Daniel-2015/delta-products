@@ -69,6 +69,7 @@
 			<button type="button" onclick="enviarCorreo()">Send</button>
 			<button type="button" onclick="objectionDebugTemplate()">Need debug</button>
 			<button type="button" onclick="ratingTemplate()">Rate</button>
+			<button type="button" onclick="clearTemplate()">Clear</button>
 		</div>
 	</details>
 <script>
@@ -100,9 +101,14 @@
 		document.getElementById('asunto').value = "Just a rating for Delta products";
 		document.getElementById('mensaje').value = "<Your rating> / 10\n\n<Why that rating>\n\nHow you may improve:\n- ...\n- ...\n- ...\n- ...\n...";
 	}
+	function clearTemplate() {
+		document.getElementById('asunto').value = "";
+		document.getElementById('mensaje').value = "";
+	}
 </script>
 </body>
 </html>
+
 
 
 
