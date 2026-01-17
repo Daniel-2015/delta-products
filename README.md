@@ -37,9 +37,9 @@ The goal of **Delta Products** is:
 - **JavaScript** (interactivity in some projects)
 
 Approximate language distribution according to GitHub:  
-- JavaScript: 55.8%  
-- HTML: 38.4%  
-- CSS: 5.8%
+- JavaScript: 58.5%  
+- HTML: 36.3%  
+- CSS: 5.2%
 
 ---
 
