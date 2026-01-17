@@ -51,10 +51,12 @@
 		<summary>Debug</summary>
 		<div>
 			<label for="asunto">Matter:</label><br>
-			<input type="text" id="asunto" placeholder="MATTER"><br>
+			<input type="text" id="asunto" placeholder="MATTER" style="font-family: monospace;"><br>
 			<label for="mensaje">Message:</label><br>
 			<textarea id="mensaje" placeholder="MESSAGE"></textarea><br>
 			<button type="button" onclick="enviarCorreo()">Send</button>
+			<button type="button" onclick="objectionDebugTemplate()">Need debug</button>
+			<button type="button" onclick="ratingTemplate()">Rate</button>
 		</div>
 	</details>
 <script>
@@ -78,9 +80,18 @@
 		a.href = `https://mail.google.com/mail/?view=cm&fs=1&to=josuedanielposadas@gmail.com&su=${asuntoCodificado}&body=${cuerpoCodificado}`;
 		a.click();
     }
+	function objectionDebugTemplate() {
+		document.getElementById('asunto').value = "Debug for <File>";
+		document.getElementById('mensage').value = "Dear Daniel,\n\n<What you need>\n\nThanks, <You>.";
+	}
+	function ratingTemplate() {
+		document.getElementById('asunto').value = "Just a rating for Delta products";
+		document.getElementById('mensage').value = "<Your rating> / 10\n\n<Why that rating>\n\nHow you may improve:\n- ...\n- ...\n- ...\n- ...\n...";
+	}
 </script>
 </body>
 </html>
+
 
 
 
