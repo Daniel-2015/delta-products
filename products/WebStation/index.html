@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Título de la página</title>
+        <link rel="stylesheet" type="text/css" href="sources/style.css">
+    </head>
+    <body style="background: #000008">
+        <span id="hour"></span>
+        <span class="logo">WSX</span>
+        <div id="miContenedor">
+            <div class="item">Load Disk</div>
+            <div class="item">Settings</div>
+            <div class="item">Browser</div>
+            <div class="item">Turn off</div>
+            <div class="item">Download game placeholder</div>
+        </div>
+        <div id="start-screen">
+            <p>PRESS ANY BUTTON</p>
+        </div>
+        <video id="miVideo" controls> <source src="sources/vid.mp4" type="video/mp4"> </video> <audio id="miAudio"> <source src="sources/aud.wav" type="audio/mpeg"> </audio> <audio id="select"> <source src="sources/select.mp3" type="audio/mpeg"> </audio>
+        <canvas id="ps2Canvas" width="300px" height="300px"></canvas>
+        <iframe src="" id="iframe"></iframe>
+        <a href="sources/Proyect-name-here.zip" style="display: none;" id="down" download></a>
+        <div id="menu-grid"></div>
+        <div id="settingsCont">
+            <div class="ittem">Change console name</div>
+            <div class="ittem">Change password</div>
+        </div>
+        <script src="sources/script.js"></script>
+    </body>
+</html>

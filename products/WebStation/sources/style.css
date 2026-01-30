@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Esto hace que el width incluya el padding */
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita que salgan barras de scroll raras */
+}
+
+/* --- Fuente BTSE (Logo Principal) --- */
+@font-face {
+    font-family: 'PS2_BTSE';
+    /* Basado en el archivo BTSE + PS2 FONT Regular de shigeki  */
+    src: url('btseps2.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- Familia Emotion Engine --- */
+@font-face {
+    font-family: 'Emotion Engine';
+    src: url('EmotionEngine-8ynA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Emotion Engine';
+    src: url('EmotionEngineBold-YGnL.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Emotion Engine';
+    src: url('EmotionEngineItalic-Mr0v.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+span {
+    color: #fff;
+    z-index: -1;
+    text-shadow: 0 0 15px #0ff;
+}
+
+#ps2Canvas {
+    position: fixed;
+    top: 50%;
+    left: min(33.33%, 300px);
+    translate: -50% -50%;
+    z-index: -2;
+}
+
+#hour {
+    font-family: 'Emotion Engine';
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
+
+/* 3. Estilos base del texto */
+.logo {
+    font-family: 'PS2_BTSE';
+    color: #fff; /* Blanco puro */
+    font-size: 40px;
+    letter-spacing: 3px;
+    position: fixed;
+    top: 0;
+    left: 16px;
+    font-weight: bold;
+    z-index: 999;
+}
+
+#miContenedor, #settingsCont {
+    width: 300px;
+    height: 200px; /* Altura limitada para forzar el scroll */
+    border: none;
+    background: #0000;
+    overflow-y: auto;
+    position: fixed;
+    top: 50%;
+    right: min(600px, 33.33%);
+    translate: 50% -50%;
+    z-index: -1;
+}
+
+#settingsCont {
+    background: #000008;
+    z-index: 0;
+    display: none;
+}
+
+/* Estilos básicos de los elementos */
+.item, .ittem {
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    color: #fff8;
+    font-family: Emotion Engine;
+    transition: background 0.5s;
+}
+
+/* Clase para destacar el elemento seleccionado actualmente */
+.item.activo, .ittem.activo {/* Azul */
+    color: #fff;
+    font-family: 'PS2_BTSE';
+    font-size: 30px;
+    letter-spacing: 6px;
+}
+
+#miVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease;
+    z-index: 100;
+}
+
+#start-screen {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: #000; 
+    z-index: 1000; 
+    cursor: pointer; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+p {
+    color: #fff; 
+    font-family: 'PS2_BTSE'; 
+    letter-spacing: 5px;
+}
+
+/* Ocultamos los elementos inicialmente */
+.logo, #hour, #miContenedor, .dec {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; /* Duración del Fade In */
+}
+
+/* Clase que activaremos con JS */
+.visible {
+    opacity: 1 !important;
+}
+
+#iframe {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: #000; 
+    z-index: 1000; 
+    cursor: pointer; 
+    display: none;
+}
+
+#menu-grid {
+    padding: 8px;
+    background: linear-gradient(to right, #444, #fff);
+    display: none;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+    grid-template-rows: repeat(3, 120px);  /* 3 filas, cada celda de 120px */
+    gap: 20px; /* espacio entre iconos */
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    margin: auto;
+}
+
+.menu-item {
+    background: #0000;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Emotion Engine';
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Esto va en style.css */
+.menu-item.selected {
+    background: #0000;
+    transform: scale(1.15);
+    border: none;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.menu-item img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 8px;
+}
+
+#settings-panel {
+    background: #0000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
