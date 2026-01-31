@@ -7,7 +7,7 @@ const style = document.createElement("style");
 style.innerText = `
 :root {
     --bg-main: #1a1a1a;
-    --bg-card: linear-gradient(to bottom, #fff8, #fff4, #fff2, #fff1, #0000);
+    --bg-card: #fff6;
     --accent: #4a90e2;
     --text-main: #e0e0e0;
     --text-muted: #a0a0a0;
@@ -40,12 +40,12 @@ h1 {
 /* Contenedores y bloques de código */
 div, code, pre, details, fieldset {
     background: var(--bg-card);
-    border: 1px solid #fff8;
+    border: none;
     border-radius: var(--radius);
     padding: 20px;
     margin-bottom: 15px;
     corner-shape: var(--type);
-    box-shadow: 0 0 10px #0008;
+    box-shadow: inset 5px 5px 5px rgba(0,0,0,0.6), inset -5px -5px 5px rgba(255,255,255,0.8);
     backdrop-filter: blur(16px);
 }
 
@@ -103,6 +103,7 @@ a:hover {
 }
 `;
 document.head.append(style);
+
 
 
 
