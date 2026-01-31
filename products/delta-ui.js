@@ -7,7 +7,7 @@ const style = document.createElement("style");
 style.innerText = `
 :root {
     --bg-main: #1a1a1a;
-    --bg-card: #fff6;
+    --bg-card: #fff4;
     --accent: #4a90e2;
     --text-main: #e0e0e0;
     --text-muted: #a0a0a0;
@@ -45,7 +45,7 @@ div, code, pre, details, fieldset {
     padding: 20px;
     margin-bottom: 15px;
     corner-shape: var(--type);
-    box-shadow: inset 5px 5px 5px rgba(0,0,0,0.6), inset -5px -5px 5px rgba(255,255,255,0.8);
+    box-shadow: inset -5px -5px 5px rgba(0,0,0,0.4), inset 5px 5px 5px rgba(255,255,255,0.4);
     backdrop-filter: blur(16px);
 }
 
@@ -103,6 +103,7 @@ a:hover {
 }
 `;
 document.head.append(style);
+
 
 
 
