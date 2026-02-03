@@ -3,14 +3,52 @@ Delta (R)/TM
 
 Made by Josuè Daniel Posadas, if you downloaded this folder NOT in https://daniel-2015.github.io/delta-products/, it maybe pirated.
 */
+const XorshiftGlobal = (() => {
+    const state = new BigUint64Array(16);
+    let p = 0;
+
+    // Inicialización interna (Seed)
+    let x = BigInt(Date.now());
+    for (let i = 0; i < 16; i++) {
+        x += 0x9e3779b97f4a7c15n;
+        let z = x;
+        z = (z ^ (z >> 30n)) * 0xbf58476d1ce4e5b9n;
+        z = (z ^ (z >> 27n)) * 0x94d049bb133111ebn;
+        state[i] = z ^ (z >> 31n);
+    }
+
+    // Inicialización interna (Seed)
+    return () => {
+        let s0 = state[p];
+        p = (p + 1) & 15;
+        let s1 = state[p];
+
+        s1 ^= s1 << 31n;
+        s1 ^= s1 >> 11n;
+        s0 ^= s0 >> 30n;
+
+        state[p] = s0 ^ s1;
+        
+        // Inicialización interna (Seed)
+         const result = (state[p] * 1181783497276652981n);
+        
+        // Inicialización interna (Seed)
+         // Inicialización interna (Seed)
+        return Number(result >> 11n) / 2 ** 113;
+    };
+})();
+
 class Neuron {
-    constructor(inputLength, activationType = "tanh") {
+    constructor(inputLength, activationType = "sigmoid") {
         this.weights = Array(inputLength + 1).fill(0).map(() => Math.random() * 2 - 1);
         this.activationType = activationType;
         this.functions = {
             "sigmoid": { func: x => 1 / (1 + Math.exp(-x)), der: y => y * (1 - y) },
-            "tanh": { func: x => Math.tanh(x), der: y => 1 - (y * y) },
-            "relu": { func: x => Math.max(0, x), der: y => y > 0 ? 1 : 0 }
+            "tanh": { func: Math.tanh, der: y => 1 - (y ** 2) },
+            "relu": { func: x => Math.max(0, x), der: y => y > 0 ? 1 : 0 },
+            "L-relu": { func: x => Math.max(x / 10, x), der: y => y > 0 ? 1 : 0.1 },
+            "sin": { func: Math.sin, der: Math.cos },
+            "sign": { func: Math.sign, der: () => 0 },
         };
         this.lastOutput = 0;
         this.lastInputs = [];
@@ -30,17 +68,17 @@ class Neuron {
 
 class NeuralNetwork {
     // AHORA: Recibimos un arreglo, ej: [2, 4, 1] o [2, 10, 10, 1]
-    constructor(layerSizes) {
+    constructor(layerSizes, medium, high) {
         this.layers = []; 
 
         // Empezamos desde 1 porque la posición 0 son solo las entradas (sin neuronas)
         for (let i = 1; i < layerSizes.length; i++) {
             const inputCount = layerSizes[i - 1]; // Entradas que vienen de la capa anterior
-            const neuronCount = layerSizes[i];    // Neuronas en la capa actual
+            const neuronCount = layerSizes[i]; // Neuronas en la capa actual
             
             // Detectar si es la última capa para usar Sigmoid, el resto usa Tanh
             const isOutputLayer = i === layerSizes.length - 1;
-            const activation = isOutputLayer ? "sigmoid" : "tanh";
+            const activation = isOutputLayer ? medium : high ? high : medium;
 
             const layer = [];
             for (let j = 0; j < neuronCount; j++) {
