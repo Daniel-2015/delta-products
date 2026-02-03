@@ -3,7 +3,7 @@ Delta (R)/TM
 
 Made by Josuè Daniel Posadas, if you downloaded this folder NOT in https://daniel-2015.github.io/delta-products/, it maybe pirated.
 */
-const XorshiftGlobal = (() => {
+Math.random = (() => {
     const state = new BigUint64Array(16);
     let p = 0;
 
@@ -49,6 +49,7 @@ class Neuron {
             "L-relu": { func: x => Math.max(x / 10, x), der: y => y > 0 ? 1 : 0.1 },
             "sin": { func: Math.sin, der: Math.cos },
             "sign": { func: Math.sign, der: () => 0 },
+            "linear": { func: x => x, der: () => 1 },
         };
         this.lastOutput = 0;
         this.lastInputs = [];
