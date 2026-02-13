@@ -139,3 +139,21 @@ class NeuralNetwork {
         });
     }
 }
+
+const tools = {
+    sound: (
+        waveForm, 
+        samplesPerSecond = 45158.4,
+        timeMS = 1000
+    ) => {
+        const length = Math.floor((timeMS * samplesPerSecond) / 1000);
+        return Array.from(
+            { length }, 
+            (_, t) => waveForm(t / samplesPerSecond)
+        );
+    },
+
+    text: input => input.split("").reduce((idx, arr) => [...arr, idx.charCodeAt(0)], []),
+    number: output => output.map(String.fromCharCode).join("")
+};
+
